@@ -2,7 +2,7 @@
 
 Inlines HTML files into Go variables.
 
-Replaces the content of []byte variables in Go files with their HTML counterpart, based on a filename-to-variable-name relationship. Support multilines, does not compress HTML.
+Replaces the content of []byte variables in Go files with their HTML counterpart, based on a filename-to-variable-name relationship. Supports multilines, does not compress HTML.
 
 ## Why?
 
@@ -10,14 +10,14 @@ Optimization for use case where loading N-files into memory at startup is deemed
 
 ## Usage.
 ```
-$ go run . -help
+$ go-inline-html -help
 Usage of go-embedd-html:
   -dest string
         destination Go file that contains variables to be filled with HTML
   -source string
         folder with HTML files, named as [variable].html
 
-$ go run . -dest=./example/main.txt -source=./example
+$ go-inline-html -dest=./example/main.txt -source=./example
 0
 ```
 
