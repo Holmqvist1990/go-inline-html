@@ -1,0 +1,13 @@
+package main
+
+import "fmt"
+
+var (
+    example1 = []byte{}
+    example2 = []byte{}
+)
+
+func main() {
+    fmt.Println(string(example1))
+    fmt.Println(string(example2))
+}
