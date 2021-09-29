@@ -6,7 +6,7 @@ Replaces the content of []byte variables in Go files with their HTML counterpart
 
 ## Why?
 
-Quicker bootup for single file Go servers than loading N-files into memory at runtime.
+Optimization for use case where loading N-files into memory at startup is deemed too slow.
 
 ## Usage.
 ```
