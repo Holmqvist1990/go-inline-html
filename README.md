@@ -1,6 +1,8 @@
 # GO-INLINE-HTML!
 
-Replaces the content of []byte variables in Go files with their HTML counterpart based on a filename-to-variablename relationship.
+Inlines HTML files into Go variables.
+
+Replaces the content of []byte variables in Go files with their HTML counterpart, based on a filename-to-variable-name relationship. Support multilines, does not compress HTML.
 
 ## Usage.
 ```
