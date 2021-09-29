@@ -7,7 +7,6 @@ Replaces the content of []byte variables in Go files with their HTML counterpart
 ## Usage.
 ```
 $ go run . -help
-
 Usage of go-embedd-html:
   -dest string
         destination Go file that contains variables to be filled with HTML
@@ -15,7 +14,6 @@ Usage of go-embedd-html:
         folder with HTML files, named as [variable].html
 
 $ go run . -dest=./example/main.txt -source=./example
-
 0
 ```
 
