@@ -4,6 +4,10 @@ Inlines HTML files into Go variables.
 
 Replaces the content of []byte variables in Go files with their HTML counterpart, based on a filename-to-variable-name relationship. Support multilines, does not compress HTML.
 
+## Why?
+
+Quicker bootup for single file Go servers than loading N-files into memory at runtime.
+
 ## Usage.
 ```
 $ go run . -help
