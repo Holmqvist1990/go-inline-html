@@ -18,18 +18,17 @@ var (
 
 func main() {
 	parseFlags()
-	for _, lookup := range htmlPaths(source) {
-		path := fmt.Sprintf("./%v/%v", source, lookup)
-		newContent := bytesFromFile(path)
-		lookup = lookup[:strings.Index(lookup, ".html")]
-		lookup = fmt.Sprintf("%v = ", lookup)
+	for _, filename := range htmlPaths(source) {
 		var (
+			fullPath   = fmt.Sprintf("./%v/%v", source, filename)
+			htmlBytes  = bytesFromFile(fullPath)
+			lookup     = lookupFrom(filename)
 			destFile   = bytesFromFile(dest)
 			start, end = getStartAndEnd(destFile, lookup)
-			text       = string(destFile)
-			toReplace  = text[start:end]
-			html       = fmt.Sprintf("[]byte(`%s`)\n", newContent)
-			final      = strings.Replace(text, toReplace, html, 1)
+			oldContent = string(destFile)
+			newContent = oldContent[start:end]
+			html       = fmt.Sprintf("[]byte(`%s`)\n", htmlBytes)
+			final      = strings.Replace(oldContent, newContent, html, 1)
 		)
 		err := ioutil.WriteFile(dest, []byte(final), 0666)
 		if err != nil {
@@ -76,6 +75,11 @@ func bytesFromFile(path string) []byte {
 		log.Fatal(err)
 	}
 	return file
+}
+
+func lookupFrom(filename string) string {
+	lookup := filename[:strings.Index(filename, ".html")]
+	return fmt.Sprintf("%v = ", lookup)
 }
 
 func getStartAndEnd(destBytes []byte, lookup string) (int, int) {
