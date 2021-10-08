@@ -23,12 +23,11 @@ func main() {
 			fullPath   = fmt.Sprintf("./%v/%v", source, filename)
 			htmlBytes  = bytesFromFile(fullPath)
 			lookup     = lookupFrom(filename)
-			destFile   = bytesFromFile(dest)
-			start, end = getStartAndEnd(destFile, lookup)
-			oldContent = string(destFile)
+			oldContent = bytesFromFile(dest)
+			start, end = getStartAndEnd(oldContent, lookup)
 			newContent = oldContent[start:end]
-			html       = fmt.Sprintf("[]byte(`%s`)\n", htmlBytes)
-			final      = strings.Replace(oldContent, newContent, html, 1)
+			html       = append(append([]byte("[]byte(`"), htmlBytes...), []byte("`)\n")...)
+			final      = bytes.Replace(oldContent, newContent, html, 1)
 		)
 		err := ioutil.WriteFile(dest, []byte(final), 0666)
 		if err != nil {
