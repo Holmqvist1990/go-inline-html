@@ -2,11 +2,11 @@
 
 Inlines HTML files into Go variables.
 
-Replaces the content of []byte variables in Go files with their HTML counterpart, based on a filename-to-variable-name relationship. Supports multilines, does not compress HTML.
+Replaces the content of []byte variables in Go files with their HTML counterpart, based on a filename-to-variable-name relationship. Supports multilines. Does not compress HTML.
 
 ## Why?
 
-Optimization for use case where loading N-files into memory at startup is deemed too slow.
+For when loading HTML from disk into memory at startup is too expensive.
 
 ## Usage.
 ```
